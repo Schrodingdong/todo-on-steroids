@@ -1,0 +1,63 @@
+.background{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(45deg, rgb(0, 48, 144) 35%, rgb(85, 4, 185) 100%);
+}
+.App {
+  color: whitesmoke;
+  width: 50%;
+  margin: auto;
+}
+.todo-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: black;
+  margin: 2rem 0;
+}
+
+button.outline{
+  font-size: xx-large;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  color: rgb(0, 48, 144);
+  border: 2px solid white;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+button.outline:hover{
+  background-color: white;
+  color: rgb(0, 48, 144);
+}
+
+.popup-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dissmisser{
+  width: 100%;
+  height: 100%;
+  z-index: 501;
+  position: fixed;
+}

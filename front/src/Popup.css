@@ -1,0 +1,44 @@
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 2rem;
+    /* background: rgba(0, 0, 0, 0.7); */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+}
+.popup form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.popup form input{
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+  box-sizing: border-box;
+}
+.popup form input[type="submit"]{
+  background-color: rgb(0, 48, 144);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.popup form select{
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+  box-sizing: border-box;
+}
