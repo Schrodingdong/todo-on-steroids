@@ -24,10 +24,11 @@ function App() {
     <div className="background"></div>
     <div className="App">
         <h1>Todo List</h1>
+        <p>To mark a todo as done, click the color icon next to the title.</p>
         <hr/>
         <div className='todo-list'>
           {todos.map(todo => {
-            return <Todo priority={todo.priority} title={todo.title}>
+            return <Todo id={todo.id} priority={todo.priority} title={todo.title} done={todo.done}>
               {todo.description}
             </Todo>
           })}
