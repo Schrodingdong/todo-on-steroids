@@ -20,7 +20,7 @@ const Todo = ({ id, priority, title, done, children }) => {
       .put(`http://localhost:8080/todo/update`, {
         id: id,
         title: title,
-        description: children[0],
+        description: children,
         priority: priority,
         done: !done,
       })
