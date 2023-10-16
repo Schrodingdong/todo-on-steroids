@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Popup.css";
 import axios from "axios";
+import ApiInstance from "./api/ApiInstance";
 
 const Popup = () => {
   const submitData = (e) => {
@@ -12,13 +13,12 @@ const Popup = () => {
       alert("Please fill all the fields");
       return;
     }
-    axios
-      .post("http://localhost:8080/todo/create", {
-        title: title,
-        description: description,
-        priority: priority,
-        done: false,
-      })
+    ApiInstance.post("/create", {
+      title: title,
+      description: description,
+      priority: priority,
+      done: false,
+    })
       .then((res) => {
         console.log(res);
         window.location.reload();

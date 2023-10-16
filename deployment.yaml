@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-back-deployment
+  labels:
+    app: todo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-app
+  template:
+    metadata:
+      labels:
+        app: todo-app
+    spec:
+      containers:
+        - name: todo-app
+          image: schrodingdong/todo-app
+          ports:
+            - containerPort: 8080
+          env:
+            - name: username
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secret
+                  key: db_user
+            - name: password
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secret
+                  key: db_password
+            - name: database_name
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secret
+                  key: db_name
+            - name: database_hostname
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-configmap
+                  key: database_hostname
+            - name: database_port
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-configmap
+                  key: database_port
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secret
+                  key: db_user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secret
+                  key: db_password
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secret
+                  key: db_name

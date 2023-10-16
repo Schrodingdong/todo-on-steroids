@@ -3,13 +3,14 @@ import './App.css';
 import Todo from './Todo';
 import { useEffect, useState } from 'react';
 import Popup from './Popup';
+import ApiInstance from './api/ApiInstance';
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [popup, setPopup] = useState(false);
 
   const getTodos = () => {
-    axios.get('http://localhost:8080/todo/get')
+    ApiInstance.get('/get')
     .then(response => {
       setTodos(response.data);
     })

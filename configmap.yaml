@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: todo-configmap
+data:
+  database_hostname: postgres-service
+  database_port: "5432"

@@ -2,6 +2,7 @@ import { Children } from "react";
 import "./Todo.css";
 import { TiDeleteOutline } from "react-icons/ti";
 import axios from "axios";
+import ApiInstance from "./api/ApiInstance";
 
 const Todo = ({ id, priority, title, done, children }) => {
   const getPriority = () => {
@@ -16,22 +17,20 @@ const Todo = ({ id, priority, title, done, children }) => {
   };
 
   const toggleDone = () => {
-    axios
-      .put(`http://localhost:8080/todo/update`, {
-        id: id,
-        title: title,
-        description: children,
-        priority: priority,
-        done: !done,
-      })
-      .then((res) => {
-        console.log(res);
-        window.location.reload();
-      });
+    ApiInstance.put("/update", {
+      id: id,
+      title: title,
+      description: children,
+      priority: priority,
+      done: !done,
+    }).then((res) => {
+      console.log(res);
+      window.location.reload();
+    });
   };
 
   const deleteTodo = () => {
-    axios.delete(`http://localhost:8080/todo/delete/${id}`).then((res) => {
+    ApiInstance.delete(`/delete/${id}`).then((res) => {
       console.log(res);
       window.location.reload();
     });
